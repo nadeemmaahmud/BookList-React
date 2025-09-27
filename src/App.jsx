@@ -12,9 +12,9 @@ const App = () => {
     <div className='bg-all'>
       <HashRouter>
         <Routes>
-          <Route path='/' element={<Books api_url={api_url}/>}/>
-          <Route path='/#/add' element={<NewBook api_url={api_url}/>}/>
-          <Route path='/edit/:id' element={<EditBook api_url={api_url}/>}/>
+          <Route path='/' element={<Books api_url={ api_url }/>}/>
+          <Route path='/add' element={<NewBook api_url={ api_url }/>}/>
+          <Route path='/edit/:id' element={<EditBook api_url={ api_url }/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </HashRouter>

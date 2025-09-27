@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { PlusCircle } from 'lucide-react';
+import Navbar from './Navbar';
 
 const EditBook = ({ api_url }) => {
     let { id } = useParams()
@@ -46,76 +47,79 @@ const EditBook = ({ api_url }) => {
     }
 
     return (
-      <div className="min-h-screen py-12 px-8">
-        <div className="max-w-lg mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
-          <h1 className="text-3xl font-bold text-gray-800 text-center">
-            ✏️ Edit A Book!
-          </h1>
-          <hr className="my-4 border-gray-300" />
-          <form onSubmit={handleFormSubmit} className="space-y-6">
-            <div>
-              <label
-                htmlFor="title"
-                className="block text-sm font-semibold text-gray-700 mb-1"
+      <div>
+        <Navbar/>
+        <div className="min-h-screen py-12 px-8">
+          <div className="max-w-lg mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
+            <h1 className="text-3xl font-bold text-gray-800 text-center">
+              ✏️ Edit A Book!
+            </h1>
+            <hr className="my-4 border-gray-300" />
+            <form onSubmit={handleFormSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="title"
+                  className="block text-sm font-semibold text-gray-700 mb-1"
+                >
+                  Title
+                </label>
+                <input
+                  name="title"
+                  value={book.title}
+                  onChange={(e) =>
+                    handleFormChange(e.target.name, e.target.value)
+                  }
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  placeholder="Enter book title"
+                />
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+              </div>
+              <div>
+                <label
+                  htmlFor="author"
+                  className="block text-sm font-semibold text-gray-700 mb-1"
+                >
+                  Author
+                </label>
+                <input
+                  name="author"
+                  value={book.author}
+                  onChange={(e) =>
+                    handleFormChange(e.target.name, e.target.value)
+                  }
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  placeholder="Enter author name"
+                />
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+              </div>
+              <div>
+                <label
+                  htmlFor="release_date"
+                  className="block text-sm font-semibold text-gray-700 mb-1"
+                >
+                  Release Date
+                </label>
+                <input
+                  name="release_date"
+                  value={book.release_date}
+                  onChange={(e) =>
+                    handleFormChange(e.target.name, e.target.value)
+                  }
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="date"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow-md transition"
               >
-                Title
-              </label>
-              <input
-                name="title"
-                value={book.title}
-                onChange={(e) =>
-                  handleFormChange(e.target.name, e.target.value)
-                }
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="text"
-                placeholder="Enter book title"
-              />
-              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-            </div>
-            <div>
-              <label
-                htmlFor="author"
-                className="block text-sm font-semibold text-gray-700 mb-1"
-              >
-                Author
-              </label>
-              <input
-                name="author"
-                value={book.author}
-                onChange={(e) =>
-                  handleFormChange(e.target.name, e.target.value)
-                }
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="text"
-                placeholder="Enter author name"
-              />
-              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-            </div>
-            <div>
-              <label
-                htmlFor="release_date"
-                className="block text-sm font-semibold text-gray-700 mb-1"
-              >
-                Release Date
-              </label>
-              <input
-                name="release_date"
-                value={book.release_date}
-                onChange={(e) =>
-                  handleFormChange(e.target.name, e.target.value)
-                }
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="date"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow-md transition"
-            >
-              <PlusCircle className="w-5 h-5" />
-              Edit Book
-            </button>
-          </form>
+                <PlusCircle className="w-5 h-5" />
+                Edit Book
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );
