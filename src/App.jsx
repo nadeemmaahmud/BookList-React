@@ -6,7 +6,7 @@ import EditBook from './components/EditBook';
 import NotFound from './components/NotFound';
 
 const App = () => {
-  const api_url = "https://booklist-0mva.onrender.com/api/"
+  const api_url = "https://booklist-0mva.onrender.com/api/books/"
 
   return (
     <div className='bg-all'>
