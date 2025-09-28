@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { PlusCircle } from 'lucide-react';
-import Navbar from './Navbar';
 
 const EditBook = ({ api_url }) => {
     let { id } = useParams()
@@ -33,10 +32,14 @@ const EditBook = ({ api_url }) => {
         if (book.author.trim() === '') return setError('This field is required!')
 
         try {
-            let res = await fetch(`${api_url}${id}`, {
+            let res = await fetch(`${api_url}${id}/`, {
                 method: "PUT",
                 headers:{'Content-Type':'application/json'},
-                body: JSON.stringify(book)
+                body: JSON.stringify({
+                  title: book.title,
+                  author: book.author,
+                  release_date: book.release_date
+                })
             })
             if (res.ok) {
                 navigate('/')
@@ -48,7 +51,6 @@ const EditBook = ({ api_url }) => {
 
     return (
       <div>
-        <Navbar/>
         <div className="min-h-screen py-12 px-8">
           <div className="max-w-lg mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
             <h1 className="text-3xl font-bold text-gray-800 text-center">

@@ -4,6 +4,7 @@ import Books from './components/Books';
 import NewBook from './components/NewBook';
 import EditBook from './components/EditBook';
 import NotFound from './components/NotFound';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const api_url = "https://booklist-0mva.onrender.com/api/books/"
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <div className='bg-all'>
       <HashRouter>
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Books api_url={ api_url }/>}/>
           <Route path='/add' element={<NewBook api_url={ api_url }/>}/>

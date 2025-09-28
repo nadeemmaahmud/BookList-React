@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Edit, Trash2} from 'lucide-react'
 import { NavLink } from 'react-router';
-import Navbar from './Navbar';
 
 const Books = ({ api_url }) => {
     let [books, setBooks] = useState([])
@@ -22,7 +21,7 @@ const Books = ({ api_url }) => {
         if (!confirmDelete) return
 
         try {
-            await fetch(`${api_url}${id}`, {
+            await fetch(`${api_url}${id}/`, {
                 method: "DELETE",
             })
             setBooks(books.filter((book) => book.id !== id))
@@ -37,7 +36,6 @@ const Books = ({ api_url }) => {
 
     return (
         <div>
-            <Navbar/>
             <div className='min-h-screen py-12 px-8'>
                 <div className='max-w-3xl mx-auto'>
                     <div className='text-center mb-10'>

@@ -1,6 +1,5 @@
 import { PlusCircle } from 'lucide-react';
 import React, { useState } from 'react';
-import Navbar from './Navbar';
 
 const NewBook = ({ api_url }) => {
     let [book, setBook] = useState({title:'', author:'', release_date:''})
@@ -31,7 +30,6 @@ const NewBook = ({ api_url }) => {
 
     return (
         <div>
-            <Navbar/>
             <div className='min-h-screen py-12 px-8'>
                 <div className="max-w-lg mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
                     <h1 className="text-3xl font-bold text-gray-800 text-center">➕ Add A New Book!</h1>
